@@ -32,26 +32,23 @@ ros.on('close', function() {
 // Publishing a Topic
 // ------------------
 
-/*
-   var countPub = new ROSLIB.Topic({
+var pub = new ROSLIB.Topic({
 ros : ros,
-name : '/count',
-messageTypes : 'std_msgs/UInt8'
+name : '/arithmetic/update/status',
+messageType : 'std_msgs/UInt8'
 });
 
 
-var count = new ROSLIB.Message({
-uint8 : x
+var reset_count = new ROSLIB.Message({
+data : 1
 });
-countPub.publish(count);
- */
 
 // Subscribing to a Topic
 // ----------------------
 
 var listener = new ROSLIB.Topic({
 ros : ros,
-name : '/arithmetic/update',
+name : '/arithmetic/update/value',
 messageType : 'std_msgs/Int64'
 });
 
@@ -65,9 +62,12 @@ listener.subscribe(function(message) {
 		document.getElementById("count").value = x;
 		});
 
+// Reset count value
+// -----------------
 function reset()
 {
 	document.getElementById("count").value = 0;
+	pub.publish(reset_count);
 }
 </script>
 </head>

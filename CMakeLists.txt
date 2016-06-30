@@ -22,8 +22,3 @@ add_executable(arithmetic_node src/arithmetic.cpp)
 target_link_libraries(arithmetic_node 
 	${catkin_LIBRARIES}
 )
-
-add_executable(turtle_node src/turtle.cpp)
-target_link_libraries(turtle_node 
-	${catkin_LIBRARIES}
-)
